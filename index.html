@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Kapoor - Tech & AI Enthusiast</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInPage 1s ease forwards;
+    }
+
+    @keyframes fadeInPage {
+      to { opacity: 1; }
+    }
+
+    canvas#particle-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      background: #0d0d0d;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 50px 70px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.15);
+      max-width: 950px;
+      width: 90%;
+      border: 1px solid rgba(0, 200, 255, 0.1);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUp 1s ease forwards 0.4s;
+      z-index: 1;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-pic {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 60px;
+      border: 3px solid rgba(0, 200, 255, 0.5);
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeScale 1s ease forwards 0.7s;
+    }
+
+    @keyframes fadeScale {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .info { flex: 1; }
+
+    .name {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #00bfff;
+      text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+      opacity: 0;
+      animation: fadeText 1s ease forwards 1.1s;
+      transition: all 0.4s ease-in-out;
+      cursor: default;
+    }
+
+    /* 👇 Hover Glow Animation Added */
+    .name:hover {
+      text-shadow:
+        0 0 10px rgba(0, 200, 255, 0.8),
+        0 0 20px rgba(0, 200, 255, 0.6),
+        0 0 35px rgba(0, 200, 255, 0.4);
+      transform: scale(1.03);
+      color: #b3ecff;
+    }
+
+    .title {
+      font-size: 1.3em;
+      font-weight: 500;
+      color: #9be7ff;
+      margin-bottom: 25px;
+      opacity: 0;
+      animation: fadeText 1s ease forwards 1.3s;
+    }
+
+    .achievements {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 1.9;
+      color: #e0e0e0;
+      opacity: 0;
+      animation: fadeText 1s ease forwards 1.5s;
+    }
+
+    @keyframes fadeText { to { opacity: 1; } }
+
+    .achievements li {
+      position: relative;
+      margin-left: 20px;
+      padding-left: 10px;
+    }
+
+    .achievements li::before {
+      content: '▹';
+      position: absolute;
+      left: -15px;
+      color: #00bfff;
+      font-size: 1.2em;
+    }
+
+    /* Buttons */
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeText 1s ease forwards 1.8s;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: 2px solid #00bfff;
+      color: #00bfff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+      background: transparent;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.1);
+    }
+
+    .btn:hover {
+      background: #00bfff;
+      color: #0d0d0d;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.7);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 750px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+      }
+      .profile-pic {
+        margin: 0 0 25px 0;
+        width: 180px;
+        height: 180px;
+      }
+      .name {
+        font-size: 2em;
+      }
+      .buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-bg"></canvas>
+
+  <div class="container">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-pic" />
+    <div class="info">
+      <div class="name">Rudra Kapoor</div>
+      <div class="title">Tech & AI Enthusiast</div>
+      <ul class="achievements">
+      <li>Interest in Computer Science and AI</li>
+      <li>Vibe coded apps using AI</li>
+      <li>Building projects in AI, Python, and automation</li>
+      <li>CBSE Class Topper in Middle and High School(Avg %age of 98.41%)</li>
+      <li>32 Gold Medals,2 Silver Medals,2 Bronze medals in Silverzone's International Olympiads</li>
+      <li>Zonal Topper in STEM Olympiad, 2 times National Topper in Science and Talent Hunt Olympiads</li>
+      <li>AIR 24 and AIR 17 in National Level SCORE exam</li>
+      <li>AIR 155 in National Level TALLENTEX exam</li>
+      <li>NMTC 2025 qualified</li>
+      <li>IOQM 2025 qualified</li>
+      <li>IOQM 2024 and IOQM 2025 National Top 10%</li>
+      <li>Visioned for future AI startup development</li>
+     
+      </ul>
+
+      <div class="buttons">
+        <a href="cv.txt" class="btn" download>⬇️ Download CV</a>
+        <a href="https://wa.me/919463264147" target="_blank" class="btn">Contact Me</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('particle-bg');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      init();
+    });
+
+    class Particle {
+      constructor(x, y, size, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0, 191, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      const numParticles = Math.floor((canvas.width * canvas.height) / 25000);
+      for (let i = 0; i < numParticles; i++) {
+        const size = Math.random() * 2 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const speedX = (Math.random() - 0.5) * 0.8;
+        const speedY = (Math.random() - 0.5) * 0.8;
+        particlesArray.push(new Particle(x, y, size, speedX, speedY));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        const p = particlesArray[i];
+        p.update();
+        p.draw();
+      }
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    function connectParticles() {
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 120) {
+            ctx.strokeStyle = `rgba(0, 191, 255, ${1 - distance / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    init();
+    animate();
+  </script>
+</body>
+</html>
